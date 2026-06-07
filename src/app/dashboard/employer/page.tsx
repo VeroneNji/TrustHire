@@ -42,9 +42,9 @@ export default async function EmployerDashboard() {
     <div className="min-h-screen bg-[#F3F2F0]">
       <Sidebar type="employer" activeTab="dashboard" />
       
-      <main className="lg:pl-64 pt-16 lg:pt-0">
+      <main className="lg:pl-64">
         {/* Professional Header */}
-        <header className="bg-white border-b border-gray-200 px-4 md:px-8 py-4 flex items-center justify-between sticky top-0 z-20">
+        <header className="bg-white border-b border-gray-200 px-4 md:px-8 py-4 flex items-center justify-between sticky top-0 z-20 h-16 md:h-20">
           <div className="flex items-center gap-4 flex-1 max-w-xl">
             <div className="relative w-full ml-12 lg:ml-0">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
@@ -55,9 +55,14 @@ export default async function EmployerDashboard() {
             </div>
           </div>
           <div className="flex items-center gap-3 ml-4">
-            <Link href="/dashboard/employer/jobs/new">
-              <Button className="bg-[#0A66C2] hover:bg-[#004182] text-white rounded-full px-4 md:px-6 font-bold text-[10px] md:text-sm h-9 md:h-10">
+            <Link href="/dashboard/employer/jobs/new" className="hidden sm:block">
+              <Button className="bg-[#0A66C2] hover:bg-[#004182] text-white rounded-full px-6 font-bold text-sm h-10">
                 Post Job
+              </Button>
+            </Link>
+            <Link href="/dashboard/employer/jobs/new" className="sm:hidden">
+              <Button size="icon" className="bg-[#0A66C2] hover:bg-[#004182] text-white rounded-full w-9 h-9">
+                <Plus className="w-5 h-5" />
               </Button>
             </Link>
           </div>

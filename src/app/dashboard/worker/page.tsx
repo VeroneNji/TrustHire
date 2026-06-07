@@ -38,9 +38,9 @@ export default async function WorkerDashboard() {
     <div className="min-h-screen bg-[#F3F2F0]">
       <Sidebar type="worker" activeTab="dashboard" />
       
-      <main className="lg:pl-64 pt-16 lg:pt-0">
+      <main className="lg:pl-64">
         {/* Header - Search focused like LinkedIn */}
-        <header className="bg-white border-b border-gray-200 px-4 md:px-8 py-4 sticky top-0 z-20">
+        <header className="bg-white border-b border-gray-200 px-4 md:px-8 py-4 sticky top-0 z-20 h-16 md:h-20 flex items-center">
           <div className="flex items-center gap-4 flex-1 max-w-xl">
             <div className="relative w-full ml-12 lg:ml-0">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />

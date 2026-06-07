@@ -65,26 +65,27 @@ export function Sidebar({ type, activeTab }: SidebarProps) {
   return (
     <>
       {/* Mobile Toggle Button */}
-      <div className="lg:hidden fixed top-4 left-4 z-[60]">
+      <div className="lg:hidden fixed top-4 left-4 z-[70]">
         <button 
-          className="bg-white p-2 rounded-md shadow-md border border-gray-200 flex items-center justify-center"
+          className="bg-[#0A66C2] text-white p-2 rounded-md shadow-lg border border-[#0A66C2] flex items-center justify-center transition-transform active:scale-95"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle Menu"
         >
-          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
       {/* Mobile Overlay */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black/50 z-[55] lg:hidden backdrop-blur-sm transition-all"
+          className="fixed inset-0 bg-black/60 z-[60] lg:hidden backdrop-blur-sm transition-opacity duration-300"
           onClick={() => setIsOpen(false)}
         />
       )}
 
       {/* Sidebar Container */}
       <div className={cn(
-        "w-64 bg-white border-r border-gray-200 h-screen fixed left-0 top-0 flex flex-col z-[58] transition-transform duration-300 lg:translate-x-0",
+        "w-64 bg-white border-r border-gray-200 h-[100dvh] fixed left-0 top-0 flex flex-col z-[65] transition-transform duration-300 ease-in-out lg:translate-x-0 shadow-2xl lg:shadow-none",
         isOpen ? "translate-x-0" : "-translate-x-full"
       )}>
         {/* LinkedIn-style Brand Header */}

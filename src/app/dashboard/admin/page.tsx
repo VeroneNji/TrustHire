@@ -29,44 +29,24 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-surface">
-      {/* Admin Sidebar (Using the same component with adjustments) */}
-      <div className="w-64 bg-[#0F172A] text-white h-screen fixed left-0 top-0 flex flex-col">
-        <div className="p-6 flex items-center gap-2">
-          <ShieldCheck className="text-secondary w-8 h-8" />
-          <span className="text-xl font-bold">TrustHire Admin</span>
-        </div>
-        <nav className="flex-1 px-4 mt-6 space-y-1">
-          <Button variant="ghost" className="w-full justify-start text-white bg-white/10 gap-3">
-            <BarChart3 className="w-5 h-5" /> Dashboard
-          </Button>
-          <Button variant="ghost" className="w-full justify-start text-gray-400 hover:text-white gap-3">
-            <ShieldCheck className="w-5 h-5" /> Verifications
-          </Button>
-          <Button variant="ghost" className="w-full justify-start text-gray-400 hover:text-white gap-3">
-            <Users className="w-5 h-5" /> User Management
-          </Button>
-          <Button variant="ghost" className="w-full justify-start text-gray-400 hover:text-white gap-3">
-            <AlertCircle className="w-5 h-5" /> Reports
-          </Button>
-        </nav>
-      </div>
+      <Sidebar type="admin" activeTab="dashboard" />
       
-      <main className="pl-64">
-        <header className="bg-white border-b px-8 py-6 flex items-center justify-between sticky top-0 z-10">
-          <div>
-            <h1 className="text-2xl font-bold text-primary">Admin Overview</h1>
-            <p className="text-sm text-gray-500">Platform Management System</p>
+      <main className="lg:pl-64 pt-16 lg:pt-0">
+        <header className="bg-white border-b px-4 md:px-8 py-4 md:py-6 flex items-center justify-between sticky top-0 z-10">
+          <div className="ml-12 lg:ml-0">
+            <h1 className="text-xl md:text-2xl font-bold text-primary">Admin Overview</h1>
+            <p className="text-[10px] md:text-sm text-gray-500">Platform Management System</p>
           </div>
-          <div className="flex items-center gap-4">
-            <div className="relative">
+          <div className="flex items-center gap-2 md:gap-4">
+            <div className="relative hidden md:block">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
-              <input className="pl-10 pr-4 py-2 bg-surface rounded-lg text-sm border-none focus:ring-2 focus:ring-primary w-64" placeholder="Search users, jobs, IDs..." />
+              <input className="pl-10 pr-4 py-2 bg-surface rounded-lg text-sm border-none focus:ring-2 focus:ring-primary w-48 lg:w-64" placeholder="Search..." />
             </div>
-            <Button className="bg-secondary hover:bg-opacity-90">Export Data</Button>
+            <Button size="sm" className="bg-secondary hover:bg-opacity-90 text-[10px] md:text-sm h-8 md:h-10">Export</Button>
           </div>
         </header>
 
-        <div className="p-8 space-y-8">
+        <div className="p-4 md:p-8 space-y-6 md:space-y-8">
           {/* Stats Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((stat, idx) => (

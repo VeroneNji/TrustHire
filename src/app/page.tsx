@@ -10,15 +10,20 @@ import {
   ChevronRight,
   MapPin,
   Globe,
-  Users
+  Users,
+  Menu,
+  X
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <main className="flex min-h-screen flex-col bg-[#F3F2F0] text-[#0F172A]">
       {/* LinkedIn-style Navigation */}
-      <nav className="flex items-center justify-between px-8 md:px-16 py-3 bg-white border-b border-gray-200 sticky top-0 z-50">
+      <nav className="flex items-center justify-between px-6 md:px-16 py-3 bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="flex items-center gap-8">
           <Link href="/" className="flex items-center gap-2">
             <div className="w-8 h-8 bg-[#0A66C2] rounded flex items-center justify-center shadow-sm">
@@ -38,12 +43,13 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex items-center gap-6">
-          <div className="hidden md:flex items-center gap-8 text-gray-500 font-semibold text-xs uppercase tracking-widest">
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center gap-6">
+          <div className="flex items-center gap-8 text-gray-500 font-semibold text-xs uppercase tracking-widest">
             <Link href="/workers" className="hover:text-[#0A66C2] transition-colors">Find Staff</Link>
             <Link href="/jobs" className="hover:text-[#0A66C2] transition-colors">Find Work</Link>
           </div>
-          <div className="h-6 w-px bg-gray-200 hidden md:block"></div>
+          <div className="h-6 w-px bg-gray-200"></div>
           <div className="flex items-center gap-4">
             <Link href="/login">
               <Button variant="ghost" className="font-bold text-xs uppercase tracking-widest text-gray-500 hover:text-[#0A66C2] hover:bg-transparent">
@@ -57,34 +63,67 @@ export default function Home() {
             </Link>
           </div>
         </div>
+
+        {/* Mobile Hamburger Toggle */}
+        <button 
+          className="md:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+
+        {/* Mobile Menu Overlay */}
+        {isMenuOpen && (
+          <div className="absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-xl md:hidden animate-in slide-in-from-top duration-300 z-40">
+            <div className="flex flex-col p-6 gap-6">
+              <div className="relative w-full">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
+                <input 
+                  className="w-full bg-[#EDF3F8] border-none rounded py-3 pl-10 pr-4 text-sm focus:ring-2 focus:ring-[#0A66C2]" 
+                  placeholder="Search jobs, talent..." 
+                />
+              </div>
+              <div className="flex flex-col gap-4 text-gray-600 font-bold text-sm uppercase tracking-widest border-t border-gray-50 pt-4">
+                <Link href="/workers" onClick={() => setIsMenuOpen(false)}>Find Staff</Link>
+                <Link href="/jobs" onClick={() => setIsMenuOpen(false)}>Find Work</Link>
+                <Link href="/login" onClick={() => setIsMenuOpen(false)}>Sign In</Link>
+              </div>
+              <Link href="/register" onClick={() => setIsMenuOpen(false)}>
+                <Button className="w-full bg-[#0A66C2] py-6 rounded-full font-bold uppercase tracking-widest text-xs">
+                  Join TrustHire Now
+                </Button>
+              </Link>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section - Professional & Clean */}
-      <section className="bg-white border-b border-gray-200 py-20 px-8 md:px-16">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+      <section className="bg-white border-b border-gray-200 py-12 md:py-20 px-6 md:px-16">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
           <div>
-            <h1 className="text-5xl md:text-6xl font-light leading-tight text-[#0F172A] mb-8">
+            <h1 className="text-4xl md:text-6xl font-light leading-tight text-[#0F172A] mb-6 md:mb-8 text-center lg:text-left">
               Welcome to your <br/>
               <span className="text-[#0A66C2] font-semibold">professional domestic network.</span>
             </h1>
-            <p className="text-xl text-gray-500 font-medium max-w-lg mb-10 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-500 font-medium max-w-lg mb-8 md:mb-10 leading-relaxed mx-auto lg:mx-0 text-center lg:text-left">
               Connect with verified staff and premium households across Cameroon. Built on trust, powered by professionals.
             </p>
             
-            <div className="space-y-4">
-              <Link href="/workers" className="block w-full sm:w-80">
+            <div className="space-y-4 flex flex-col items-center lg:items-start">
+              <Link href="/workers" className="w-full sm:w-80">
                 <Button className="w-full bg-white hover:bg-gray-50 text-[#0F172A] border border-gray-300 py-7 rounded-lg font-bold text-lg flex justify-between px-6 transition-all group">
                   Search for talent <ChevronRight className="w-5 h-5 text-gray-400 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
-              <Link href="/jobs" className="block w-full sm:w-80">
+              <Link href="/jobs" className="w-full sm:w-80">
                 <Button className="w-full bg-white hover:bg-gray-50 text-[#0F172A] border border-gray-300 py-7 rounded-lg font-bold text-lg flex justify-between px-6 transition-all group">
                   Post a job opening <ChevronRight className="w-5 h-5 text-gray-400 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
             </div>
 
-            <div className="mt-12 flex items-center gap-4">
+            <div className="mt-12 flex justify-center lg:justify-start">
               <div className="flex items-center gap-3 bg-[#F3F2F0] px-6 py-4 rounded-xl border border-gray-200">
                 <Star className="w-5 h-5 text-amber-500 fill-amber-500" />
                 <div>
@@ -115,14 +154,14 @@ export default function Home() {
       </section>
 
       {/* Value Props */}
-      <section className="py-20 px-8 md:px-16 max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
+      <section className="py-16 md:py-20 px-6 md:px-16 max-w-6xl mx-auto grid md:grid-cols-3 gap-10 md:gap-12">
         {[
           { icon: Users, title: "Find the right staff", desc: "Browse through a network of 1,200+ pre-vetted professionals in your city." },
           { icon: Briefcase, title: "Advance your career", desc: "Get noticed by premium households and build your professional reputation." },
           { icon: Award, title: "Verified Trust", desc: "Every worker profile is backed by CNI verification and employer endorsements." },
         ].map((item, idx) => (
           <div key={idx} className="text-center space-y-4">
-            <div className="w-16 h-16 bg-[#EDF3F8] rounded-full flex items-center justify-center mx-auto">
+            <div className="w-16 h-16 bg-[#EDF3F8] rounded-full flex items-center justify-center mx-auto transition-transform hover:scale-110">
               <item.icon className="w-8 h-8 text-[#0A66C2]" />
             </div>
             <h3 className="text-xl font-bold text-[#0F172A]">{item.title}</h3>
@@ -132,9 +171,9 @@ export default function Home() {
       </section>
 
       {/* Footer - Professional & Minimal */}
-      <footer className="bg-white pt-16 pb-8 px-8 md:px-16 border-t border-gray-200 mt-auto">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-12 border-b border-gray-100 pb-12">
-          <div className="col-span-2 space-y-6">
+      <footer className="bg-white pt-16 pb-8 px-6 md:px-16 border-t border-gray-200 mt-auto">
+        <div className="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-4 gap-12 border-b border-gray-100 pb-12">
+          <div className="sm:col-span-2 space-y-6">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 bg-[#0A66C2] rounded flex items-center justify-center">
                 <ShieldCheck className="text-white w-4 h-4" />
@@ -162,7 +201,7 @@ export default function Home() {
             </ul>
           </div>
         </div>
-        <div className="max-w-6xl mx-auto pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="max-w-6xl mx-auto pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
           <p className="text-[10px] font-bold text-gray-300 uppercase tracking-widest">© {new Date().getFullYear()} TrustHire Engineering. Cameroon.</p>
           <div className="flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full border border-gray-100">
             <Globe className="w-3 h-3 text-gray-400" />

@@ -62,7 +62,7 @@ export default function MessagingPage() {
     <div className="min-h-screen bg-[#F3F2F0]">
       <Sidebar type={userType as any} activeTab="messages" />
       
-      <main className="pl-64 h-screen flex flex-col max-w-6xl mx-auto">
+      <main className="md:pl-64 h-screen flex flex-col pt-16 md:pt-0 max-w-6xl mx-auto">
         <div className="flex-1 flex overflow-hidden bg-white my-4 mx-8 rounded-xl border border-gray-200 shadow-sm">
           {/* Messages Sidebar (Conversations List) */}
           <div className="w-80 border-r border-gray-100 flex flex-col">

@@ -47,7 +47,7 @@ export default async function WorkerProfilePage({ params }: { params: { id: stri
     <div className="min-h-screen bg-[#F3F2F0]">
       {currentUser && <Sidebar type={userType as any} activeTab="workers" />}
       
-      <main className={currentUser ? "pl-64" : ""}>
+      <main className={currentUser ? "md:pl-64 pt-16 md:pt-0" : ""}>
         <header className="bg-white border-b border-gray-200 px-8 py-3 sticky top-0 z-20 flex items-center justify-between">
           <Link href="/workers" className="flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-[#0A66C2]">
             <ChevronLeft className="w-4 h-4" /> Back to Search

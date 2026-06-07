@@ -38,7 +38,7 @@ export default function WorkerVerifyPage() {
     <div className="min-h-screen bg-[#F3F2F0]">
       <Sidebar type="worker" activeTab="dashboard" />
       
-      <main className="pl-64">
+      <main className="md:pl-64 pt-16 md:pt-0">
         <header className="bg-white border-b border-gray-200 px-8 py-4 sticky top-0 z-20">
           <h1 className="text-xl font-bold text-[#0F172A]">Trust & Compliance Center</h1>
         </header>

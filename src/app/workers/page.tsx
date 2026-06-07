@@ -27,10 +27,13 @@ export default async function WorkerSearchPage() {
     <div className="min-h-screen bg-[#F3F2F0]">
       {currentUser && <Sidebar type={userType as any} activeTab="workers" />}
       
-      <main className={currentUser ? "pl-64" : ""}>
+      <main className={currentUser ? "md:pl-64 pt-16 md:pt-0" : ""}>
         {/* LinkedIn-style Top Nav */}
-        <nav className="bg-white border-b border-gray-200 px-8 py-3 sticky top-0 z-50 flex items-center justify-between">
+        <nav className="bg-white border-b border-gray-200 px-4 md:px-8 py-3 sticky top-0 z-50 flex items-center justify-between">
           <div className="flex items-center gap-6 flex-1 max-w-2xl">
+            {(!currentUser || true) && (
+              <div className="md:hidden ml-12"></div>
+            )}
             {!currentUser && (
               <Link href="/" className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-[#0A66C2] rounded flex items-center justify-center">

@@ -62,7 +62,7 @@ export default function NewJobPage() {
     <div className="min-h-screen bg-[#FDFDFF]">
       <Sidebar type="employer" activeTab="job-posts" />
       
-      <main className="pl-64">
+      <main className="md:pl-64 pt-16 md:pt-0">
         <header className="bg-white/80 backdrop-blur-md border-b px-10 py-8 sticky top-0 z-20">
           <Link href="/dashboard/employer" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-[#0F172A] mb-4 transition-colors">
             <ArrowLeft className="w-3 h-3" /> Back to Dashboard

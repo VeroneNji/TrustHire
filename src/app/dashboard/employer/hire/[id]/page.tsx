@@ -44,7 +44,7 @@ export default function HireWorkerPage({ params }: { params: { id: string } }) {
     <div className="min-h-screen bg-[#F3F2F0]">
       <Sidebar type="employer" activeTab="workers" />
       
-      <main className="pl-64">
+      <main className="md:pl-64 pt-16 md:pt-0">
         <header className="bg-white border-b border-gray-200 px-8 py-4 sticky top-0 z-20 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link href={`/workers/${params.id}`}>

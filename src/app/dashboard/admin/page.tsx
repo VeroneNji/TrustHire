@@ -31,9 +31,9 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-surface">
       <Sidebar type="admin" activeTab="dashboard" />
       
-      <main className="lg:pl-64 pt-16 lg:pt-0">
+      <main className="md:pl-64">
         <header className="bg-white border-b px-4 md:px-8 py-4 md:py-6 flex items-center justify-between sticky top-0 z-10">
-          <div className="ml-12 lg:ml-0">
+          <div className="ml-14 md:ml-0">
             <h1 className="text-xl md:text-2xl font-bold text-primary">Admin Overview</h1>
             <p className="text-[10px] md:text-sm text-gray-500">Platform Management System</p>
           </div>

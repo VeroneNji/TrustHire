@@ -38,11 +38,11 @@ export default async function WorkerDashboard() {
     <div className="min-h-screen bg-[#F3F2F0]">
       <Sidebar type="worker" activeTab="dashboard" />
       
-      <main className="lg:pl-64">
+      <main className="md:pl-64">
         {/* Header - Search focused like LinkedIn */}
         <header className="bg-white border-b border-gray-200 px-4 md:px-8 py-4 sticky top-0 z-20 h-16 md:h-20 flex items-center">
           <div className="flex items-center gap-4 flex-1 max-w-xl">
-            <div className="relative w-full ml-12 lg:ml-0">
+            <div className="relative w-full ml-14 md:ml-0">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
               <input 
                 className="w-full bg-[#EDF3F8] border-none rounded-md py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-[#0A66C2] transition-all" 

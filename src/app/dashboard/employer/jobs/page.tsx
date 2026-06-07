@@ -19,9 +19,9 @@ export default async function EmployerJobsPage() {
     <div className="min-h-screen bg-[#F3F2F0]">
       <Sidebar type="employer" activeTab="job-posts" />
       
-      <main className="lg:pl-64">
+      <main className="md:pl-64">
         <header className="bg-white border-b border-gray-200 px-4 md:px-8 py-4 flex items-center justify-between sticky top-0 z-20 h-16 md:h-20">
-          <h1 className="text-lg md:text-xl font-bold text-[#0F172A] ml-12 lg:ml-0">My Job Listings</h1>
+          <h1 className="text-lg md:text-xl font-bold text-[#0F172A] ml-14 md:ml-0">My Job Listings</h1>
           <Link href="/dashboard/employer/jobs/new">
             <Button className="bg-[#0A66C2] hover:bg-[#004182] text-white rounded-full font-bold text-[10px] md:text-sm px-4 md:px-6 h-9 md:h-10">
               <Plus className="w-3 md:w-4 h-3 md:h-4 mr-1 md:mr-2" /> Post Job

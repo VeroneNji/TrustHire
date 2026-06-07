@@ -202,7 +202,7 @@ export default function Home() {
           </div>
         </div>
         <div className="max-w-6xl mx-auto pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-          <p className="text-[10px] font-bold text-gray-300 uppercase tracking-widest">© {new Date().getFullYear()} TrustHire Engineering. Cameroon.</p>
+          <p className="text-[10px] font-bold text-gray-300 uppercase tracking-widest">© {new Date().getFullYear()} TrustHire Engineering. Cameroon. v1.2</p>
           <div className="flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full border border-gray-100">
             <Globe className="w-3 h-3 text-gray-400" />
             <span className="text-[10px] font-bold uppercase text-gray-500">Language: English (Cameroon)</span>

@@ -64,10 +64,11 @@ export function Sidebar({ type, activeTab }: SidebarProps) {
 
   return (
     <>
-      {/* Mobile Toggle Button */}
-      <div className="lg:hidden fixed top-4 left-4 z-[70]">
+    <>
+      {/* Mobile Toggle Button - Always visible on mobile, hidden on Desktop */}
+      <div className="md:hidden fixed top-4 left-4 z-[70]">
         <button 
-          className="bg-[#0A66C2] text-white p-2 rounded-md shadow-lg border border-[#0A66C2] flex items-center justify-center transition-transform active:scale-95"
+          className="bg-[#0A66C2] text-white p-3 rounded-md shadow-xl border border-[#0A66C2] flex items-center justify-center transition-all hover:scale-105 active:scale-95"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle Menu"
         >
@@ -75,17 +76,17 @@ export function Sidebar({ type, activeTab }: SidebarProps) {
         </button>
       </div>
 
-      {/* Mobile Overlay */}
+      {/* Mobile Overlay - Full screen dimming */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black/60 z-[60] lg:hidden backdrop-blur-sm transition-opacity duration-300"
+          className="fixed inset-0 bg-[#0F172A]/80 z-[60] md:hidden backdrop-blur-md transition-opacity duration-300"
           onClick={() => setIsOpen(false)}
         />
       )}
 
-      {/* Sidebar Container */}
+      {/* Sidebar Container - Responsive Drawer */}
       <div className={cn(
-        "w-64 bg-white border-r border-gray-200 h-[100dvh] fixed left-0 top-0 flex flex-col z-[65] transition-transform duration-300 ease-in-out lg:translate-x-0 shadow-2xl lg:shadow-none",
+        "w-64 bg-white border-r border-gray-200 h-[100dvh] fixed left-0 top-0 flex flex-col z-[65] transition-transform duration-300 ease-in-out md:translate-x-0 shadow-2xl md:shadow-none",
         isOpen ? "translate-x-0" : "-translate-x-full"
       )}>
         {/* LinkedIn-style Brand Header */}

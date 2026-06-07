@@ -1,7 +1,7 @@
 import { createClient } from "@/lib/supabase-server";
 import { Sidebar } from "@/components/dashboard/sidebar";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Briefcase, CheckCircle, Clock, Star, ArrowUpRight, ShieldCheck, AlertCircle, MapPin, ChevronRight, Eye, UserPlus, Bookmark, Search, MoreHorizontal } from "lucide-react";
+import { Briefcase, CheckCircle, Clock, Star, ArrowUpRight, ShieldCheck, AlertCircle, MapPin, ChevronRight, Eye, UserPlus, Bookmark, Search, MoreHorizontal, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";

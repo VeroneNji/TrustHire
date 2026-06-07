@@ -21,7 +21,7 @@ import {
 import { cn } from "@/lib/utils";
 import { createClient } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface SidebarProps {
   type: "employer" | "worker" | "admin";
@@ -33,6 +33,18 @@ export function Sidebar({ type, activeTab }: SidebarProps) {
   const router = useRouter();
   const supabase = createClient();
   const [isOpen, setIsOpen] = useState(false);
+
+  // Disable body scroll when sidebar is open on mobile
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   const menuItems = {
     employer: [
@@ -58,12 +70,12 @@ export function Sidebar({ type, activeTab }: SidebarProps) {
   }[type];
 
   const handleLogout = async () => {
+    setIsOpen(false);
     await supabase.auth.signOut();
     router.push("/login");
   };
 
   return (
-    <>
     <>
       {/* Mobile Toggle Button - Always visible on mobile, hidden on Desktop */}
       <div className="md:hidden fixed top-4 left-4 z-[70]">
@@ -76,12 +88,16 @@ export function Sidebar({ type, activeTab }: SidebarProps) {
         </button>
       </div>
 
-      {/* Mobile Overlay - Full screen dimming */}
+      {/* Mobile Overlay - Darker and more opaque for full isolation */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-[#0F172A]/80 z-[60] md:hidden backdrop-blur-md transition-opacity duration-300"
+          className="fixed inset-0 bg-[#0F172A]/95 z-[60] md:hidden backdrop-blur-sm transition-opacity duration-300 flex items-center justify-center"
           onClick={() => setIsOpen(false)}
-        />
+        >
+          <p className="text-white/20 font-black uppercase tracking-[0.5em] text-xs pointer-events-none">
+            TrustHire Mobile Menu
+          </p>
+        </div>
       )}
 
       {/* Sidebar Container - Responsive Drawer */}
@@ -91,7 +107,7 @@ export function Sidebar({ type, activeTab }: SidebarProps) {
       )}>
         {/* LinkedIn-style Brand Header */}
         <div className="p-6 border-b border-gray-100 flex items-center gap-3">
-          <Link href="/" className="flex items-center gap-2.5">
+          <Link href="/" className="flex items-center gap-2.5" onClick={() => setIsOpen(false)}>
             <div className="w-9 h-9 bg-[#0A66C2] rounded-md flex items-center justify-center shadow-sm">
               <ShieldCheck className="text-white w-5.5 h-5.5" />
             </div>
